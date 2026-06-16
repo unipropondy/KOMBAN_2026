@@ -87,6 +87,9 @@ global.fetch = async function (input: RequestInfo | URL, init?: RequestInit): Pr
         lastError = new Error(`Server returned status ${response.status}`);
       } catch (err: any) {
         lastError = err;
+        if (err.name === 'AbortError' || options.signal?.aborted) {
+          throw err;
+        }
         console.warn(`⚠️ [Global Fetch] [Attempt ${attempt}/${maxRetries}] failed: ${err.message || err}`);
       }
 
