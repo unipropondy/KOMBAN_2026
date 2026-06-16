@@ -145,7 +145,7 @@ router.get("/dishes/group/:DishGroupId", async (req, res) => {
           LEFT JOIN CategoryKitchenType ckt
               ON dgm.CategoryId = ckt.CategoryId
  
-          LEFT JOIN DishGroupMapping dmap
+          LEFT JOIN DishDishGroup dmap
               ON d.DishId = dmap.DishId
  
           LEFT JOIN (
